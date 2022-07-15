@@ -10,11 +10,6 @@ def create_tables(connection):
         with connection.cursor() as cursor:
             cursor.execute(CREATE_HEADLINES)
 
-def create_headlines(connection):
-    with connection:
-        with connection.cursor() as cursor:
-            cursor.execute(CREATE_HEADLINES)
-
 def add_headline(connection, headline):
     with connection:
         with connection.cursor() as cursor:
