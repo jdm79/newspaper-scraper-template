@@ -3,6 +3,7 @@ from requests import get
 import psycopg2
 from bs4 import BeautifulSoup
 import database
+import requests
 
 
 db_url = "postgres://oxbvadmp:stDxRRjicw60W6kRDQdDavS3g8_soU0Y@rogue.db.elephantsql.com/oxbvadmp"
@@ -10,16 +11,17 @@ db_url = "postgres://oxbvadmp:stDxRRjicw60W6kRDQdDavS3g8_soU0Y@rogue.db.elephant
 headers = {"Accept-language": "en-US, en;q=0.5"}
 guardian_url = "https://www.theguardian.com/uk"
 
-# # creates dynamic url to get the current day's list
-# results = requests.get(guardian_url, headers=headers)
+# creates dynamic url to get the current day's list
+results = requests.get(guardian_url, headers=headers)
 
-# soup = BeautifulSoup(results.text, "html.parser")
+soup = BeautifulSoup(results.text, "html.parser")
 
-# headline_html = soup.find('span', class_='js-headline-text')
-# headline = headline_html.text.strip()  
+headline_html = soup.find('span', class_='js-headline-text')
+headline = headline_html.text.strip()
+print(headline)
 
 connection = psycopg2.connect(db_url)
-headline = 'Goodnight!'
+# headline = 'Goodnight!'
 
 database.create_tables(connection)
 database.create_tables(connection)
