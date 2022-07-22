@@ -15,24 +15,34 @@ paper = "The Guardian"
 # creates dynamic url to get the current day's list
 results = requests.get(newspaper_url, headers=headers)
 soup = BeautifulSoup(results.text, "html.parser")
-# print(soup)
 
 timestamp = '{:%b-%d-%Y %H:%M:%S}'.format(datetime.datetime.now())
 headline_url_html = soup.find('a', class_='fc-item__link')
 url = headline_url_html['href']
 headline_html = soup.find('span', class_='js-headline-text')
 headline = headline_html.text.strip()
-body = "This is the body of the article."
+
+body_results = requests.get(url, headers=headers)
+soup = BeautifulSoup(body_results.text, "html.parser")
+body_html = soup.find('div', class_='dcr-j7ihvk')
+body = body_html.text.strip()
+
+
+# This will chop up the p tags but the above seems to work well enough for what we want
+# body = body_html.find_all('p')
+# ’print(body_html.text.strip())
+# for x in body:
+#     print(x.text.strip())
+
+print(body)
 print(headline)
+print(body)
+
 print(url)
+# print(body_html)
 
 connection = psycopg2.connect(db_url)
 
 # database.add_columns(connection)
 database.create_tables(connection)
 database.add_headline(connection, headline, url, paper, timestamp, body)
-
-
-
-
-
