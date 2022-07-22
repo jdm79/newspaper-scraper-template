@@ -43,6 +43,7 @@ print(url)
 
 connection = psycopg2.connect(db_url)
 
-# database.add_columns(connection)
+# database.add_columns(connection) ONLY USE THIS TO ADD NEW COLUMNS
+# database.add_unique(connection)
 database.create_tables(connection)
 database.add_headline(connection, headline, url, paper, timestamp, body)
