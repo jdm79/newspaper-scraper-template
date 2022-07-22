@@ -5,6 +5,7 @@ CREATE_HEADLINES = """CREATE TABLE IF NOT EXISTS headlines
 INSERT_HEADLINE = "INSERT INTO headlines (headline, url, paper, timestamp, body) VALUES (%s, %s, %s, %s, %s);"
 SELECT_ALL_HEADLINES = "SELECT * FROM headlines;"
 
+# https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-add-column/
 ADD_COLUMNS = """ALTER TABLE headlines
 ADD COLUMN url TEXT,
 ADD COLUMN paper TEXT,
