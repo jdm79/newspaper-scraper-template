@@ -11,7 +11,7 @@ db_url = "postgres://oxbvadmp:stDxRRjicw60W6kRDQdDavS3g8_soU0Y@rogue.db.elephant
 headers = {"Accept-language": "en-US, en;q=0.5"}
 newspaper_url = "https://www.theguardian.com/uk"
 paper = "The Guardian"
-fail = "Error - failed to scrape "
+fail = "Error - failed to scrape the text of this article from  " 
 
 # creates dynamic url to get the current day's list
 results = requests.get(newspaper_url, headers=headers)
