@@ -11,6 +11,7 @@ db_url = "postgres://oxbvadmp:stDxRRjicw60W6kRDQdDavS3g8_soU0Y@rogue.db.elephant
 headers = {"Accept-language": "en-US, en;q=0.5"}
 newspaper_url = "https://www.theguardian.com/uk"
 paper = "The Guardian"
+fail = "Error - failed to scrape "
 
 # creates dynamic url to get the current day's list
 results = requests.get(newspaper_url, headers=headers)
@@ -25,7 +26,13 @@ headline = headline_html.text.strip()
 body_results = requests.get(url, headers=headers)
 soup = BeautifulSoup(body_results.text, "html.parser")
 body_html = soup.find('div', class_='dcr-j7ihvk')
-body = body_html.text.strip()
+
+if body_html != None:
+    body = body_html.text.strip()
+else:
+    body = fail + paper
+
+print(body_html)
 
 
 # This will chop up the p tags but the above seems to work well enough for what we want
@@ -34,11 +41,8 @@ body = body_html.text.strip()
 # for x in body:
 #     print(x.text.strip())
 
-print(body)
 print(headline)
 print(body)
-
-print(url)
 # print(body_html)
 
 connection = psycopg2.connect(db_url)
