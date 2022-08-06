@@ -6,7 +6,7 @@ import database
 import requests
 import datetime
 
-db_url = "postgres://oxbvadmp:stDxRRjicw60W6kRDQdDavS3g8_soU0Y@rogue.db.elephantsql.com/oxbvadmp"
+db_url = "postgres://oxbvadmp:r5tJzuWI1-7XXKq1noJPVsoxFSQNfjG-@rogue.db.elephantsql.com/oxbvadmp"
 
 headers = {"Accept-language": "en-US, en;q=0.5"}
 newspaper_url = "https://www.theguardian.com/uk"
