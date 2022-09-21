@@ -15,17 +15,17 @@ ADD_COLUMNS = """ALTER TABLE headlines
 ADD COLUMN id SERIAL
 ;"""
 
-ADD_UNIQUE = "ALTER TABLE headlines ADD CONSTRAINT constraintname UNIQUE (headline)"
+# ADD_UNIQUE = "ALTER TABLE headlines ADD CONSTRAINT constraintname UNIQUE (headline)"
 
 def create_tables(connection):
     with connection:
         with connection.cursor() as cursor:
             cursor.execute(CREATE_HEADLINES)
 
-def add_unique(connection):
-    with connection:
-        with connection.cursor() as cursor:
-            cursor.execute(ADD_UNIQUE)
+# def add_unique(connection):
+#     with connection:
+#         with connection.cursor() as cursor:
+#             cursor.execute(ADD_UNIQUE)
 
 def add_columns(connection):
     with connection:

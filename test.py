@@ -23,10 +23,13 @@ papers = [
     [6, "https://www.thetimes.co.uk/", "The Times", "h3", "Headline--xl"]
 
 ]
+scrape_results = []
 
 
 def scrapeHeadlines():
-    scrape_results = []
+
+    connection = psycopg2.connect(db_url)
+
 
     randomUrls = [ 
     "https://www.facebook.com/", 
@@ -53,24 +56,34 @@ def scrapeHeadlines():
       headline = headline_html.text.strip()
     else:
       headline = fail 
-    
-    scrape_results.append({
-                    'id': id,
-                    'paper': newspaper,
-                    'headline': headline
-                    })
 
-    connection = psycopg2.connect(db_url)
-
-    # database.add_columns(connection) ONLY USE THIS TO ADD NEW COLUMNS
-    # database.add_unique(connection)
     database.create_tables(connection)
+
     database.add_headline(connection, headline, url, newspaper, timestamp)
-    print(scrape_results)
+    
+    # scrape_results.append({
+    #                 'id': id,
+    #                 'paper': newspaper,
+    #                 'headline': headline
+    #                 })
+
 
 
 for paper in papers:
     scrapeHeadlines()
+
+print(scrape_results)
+
+
+# connection = psycopg2.connect(db_url)
+
+# # database.add_columns(connection) ONLY USE THIS TO ADD NEW COLUMNS
+# # database.add_unique(connection)
+# database.create_tables(connection)
+
+# database.add_headline(connection, headline, url, newspaper, timestamp)
+    
+
 
 
 
