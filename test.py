@@ -15,7 +15,7 @@ papers = [
     ["https://www.theguardian.com/uk", "The Guardian", "span", "js-headline-text", 1],
     ["https://www.mirror.co.uk/", "The Daily Mirror", "h2", "story__title", 2],
     ["https://www.thetimes.co.uk/", "The Times", "h3", "Headline--xl", 3],
-    ["https://www.thesun.co.uk/", "The Sun", "p", "teaser__subdeck", 4],
+    ["https://www.thesun.co.uk/", "The Sun", "h2", "nk-headline-heading css-1r6h6ly", 4],
     ["https://www.independent.co.uk/news/uk", "The Independent", "a", "title", 5],
     ["https://www.ft.com/world/uk", "The Financial Times", "div", "o-teaser__heading", 6],
     ["https://www.telegraph.co.uk/", "The Telegraph", "span", "list-headline__text", 7],
