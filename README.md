@@ -1,6 +1,6 @@
 # Template web scraper
 
-This is roughly what I use to scrape headlines for uk-headline-checker and send results to my database (db).
+This is roughly what I use to scrape headlines for [uk-headline-checker](https://www.uk-headline-checker.com/) and send results to my database (db).
 
 You can personalise the targets to scrape and save the data to your own databases.
 
