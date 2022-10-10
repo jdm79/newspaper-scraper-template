@@ -8,7 +8,7 @@ import database
 import requests
 import datetime
 
-db_url = "postgres://oxbvadmp:r5tJzuWI1-7XXKq1noJPVsoxFSQNfjG-@rogue.db.elephantsql.com/oxbvadmp"
+db_url = ""
 
 
 fail = "Error - failed to scrape the text of this article from " 
@@ -28,7 +28,7 @@ scrape_results = []
 
 def scrapeHeadlines():
 
-    connection = psycopg2.connect(db_url)
+    # connection = psycopg2.connect(db_url)
 
 
     randomUrls = [ 
@@ -57,16 +57,15 @@ def scrapeHeadlines():
     else:
       headline = fail 
 
-    database.create_tables(connection)
+    # database.create_tables(connection)
 
-    database.add_headline(connection, headline, url, newspaper, timestamp)
-    
-    # scrape_results.append({
-    #                 'id': id,
-    #                 'paper': newspaper,
-    #                 'headline': headline
-    #                 })
+    # database.add_headline(connection, headline, url, newspaper, timestamp)
 
+    scrape_results.append({
+                    'id': id,
+                    'paper': newspaper,
+                    'headline': headline
+                    })
 
 
 for paper in papers:

@@ -8,9 +8,8 @@ CREATE_HEADLINES = """CREATE TABLE IF NOT EXISTS headlines (
     url TEXT,
     paper TEXT,
     timestamp TEXT,
-    paper_id TEXT
     );"""
-INSERT_HEADLINE = "INSERT INTO headlines (headline, url, paper, timestamp, paper_id) VALUES (%s, %s, %s, %s, %s);"
+INSERT_HEADLINE = "INSERT INTO headlines (headline, url, paper, timestamp) VALUES (%s, %s, %s, %s, %s);"
 SELECT_ALL_HEADLINES = "SELECT * FROM headlines;"
 
 # https://www.postgresqltutorial.com/postgresql-tutorial/postgresql-add-column/
@@ -40,10 +39,10 @@ def add_columns(connection):
             cursor.execute(ADD_COLUMNS)
 
 
-def add_headline(connection, headline, url, paper, timestamp, paper_id):
+def add_headline(connection, headline, url, paper, timestamp):
     with connection:
         with connection.cursor() as cursor:
-            cursor.execute(INSERT_HEADLINE, (headline, url, paper, timestamp, paper_id))        
+            cursor.execute(INSERT_HEADLINE, (headline, url, paper, timestamp))        
 
 def get_headlines(connection):
     with connection:
